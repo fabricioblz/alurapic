@@ -2,8 +2,8 @@
   <div class="corpo">
     <nav>
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/cadastro">Cadastro</a></li>
+        <li><router-link to="/">Home</router-link></li>
+        <li><router-link to="/cadastro">Cadastro</router-link></li>
       </ul>
     </nav>
 
