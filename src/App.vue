@@ -6,7 +6,9 @@
       </ul>
     </nav>
 
-    <router-view></router-view>
+    <transition name="pagina">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -33,4 +35,14 @@
     margin: 0 auto;
     width: 96%;
   }
+
+ .pagina-enter, .pagina-leave-active {
+
+   opacity: 0;
+ }
+
+ .pagina-enter-active, .pagina-leave-active {
+
+   transition: opacity .4s;
+ }
 </style>
