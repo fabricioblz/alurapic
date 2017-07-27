@@ -1,12 +1,22 @@
 <template>
-  <button class='botao botao-perigo' :type='tipo'>{{ rotulo }}</button>
+  <button class='botao botao-perigo' @click='launchButton' :type='tipo'>{{ rotulo }}</button>
 </template>
 
 
 <script>
 
 export default{
-  props:['tipo', 'rotulo']
+  props:['tipo', 'rotulo'],
+
+  methods: {
+    launchButton(){
+      if(confirm('Sure?'))
+      {
+        this.$emit('buttonTrigged')
+
+      }
+    }
+  },
 }
 
 </script>
