@@ -6,7 +6,18 @@
 <script>
 
 export default{
-  props:['tipo', 'rotulo', 'confirmation', 'classStyle'],
+  props: {
+    tipo: {
+      required: true,
+      type: String
+    },
+    rotulo: {
+      required: true,
+      type: String
+    },
+    confirmation: Boolean,
+    classStyle: String
+  },
 
   methods: {
     launchButton(){
