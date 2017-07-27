@@ -9,6 +9,7 @@
       <li class="lista-fotos-item" v-for="foto of fotosComFiltro">
         <meu-painel :titulo="foto.titulo">
           <imagem-responsiva :url="foto.url" :titulo="foto.titulo"/>
+            <meu-botao rotulo='Remover' tipo='button' />
         </meu-painel>
       </li>
     </ul>
@@ -17,62 +18,63 @@
 
 <script>
 
-  import Painel from '../shared/painel/Painel.vue';
-  import ImagemResponsiva from '../shared/imagem-responsiva/ImagemResponsiva.vue'
+import Painel from '../shared/painel/Painel.vue';
+import ImagemResponsiva from '../shared/imagem-responsiva/ImagemResponsiva.vue'
+import Botao from '../shared/botao/Botao.vue'
 
-  export default {
+export default {
 
-    components: {
+  components: {
+    'meu-botao': Botao,
+    'meu-painel': Painel,
+    'imagem-responsiva': ImagemResponsiva
+  },
 
-      'meu-painel': Painel,
-      'imagem-responsiva': ImagemResponsiva
-    },
+  data () {
+    return {
 
-    data () {
-      return {
+      fotos: [],
 
-        fotos: [],
-
-        filtro: ''
-      }
-    },
-
-    computed: {
-      fotosComFiltro() {
-        if (this.filtro) {
-          let exp = new RegExp(this.filtro.trim(), 'i');
-          return this.fotos.filter(foto => exp.test(foto.titulo));
-        } else {
-          return this.fotos;
-        }
-      }
-    },
-
-    created() {
-
-      this.$http
-        .get('http://localhost:3000/v1/fotos')
-        .then(res => res.json())
-        .then(fotos => this.fotos = fotos, err => console.log(err));
+      filtro: ''
     }
+  },
+
+  computed: {
+    fotosComFiltro() {
+      if (this.filtro) {
+        let exp = new RegExp(this.filtro.trim(), 'i');
+        return this.fotos.filter(foto => exp.test(foto.titulo));
+      } else {
+        return this.fotos;
+      }
+    }
+  },
+
+  created() {
+
+    this.$http
+    .get('http://localhost:3000/v1/fotos')
+    .then(res => res.json())
+    .then(fotos => this.fotos = fotos, err => console.log(err));
   }
+}
 </script>
 <style>
 
-  .centralizado {
-    text-align: center;
-  }
+.centralizado {
+  text-align: center;
+}
 
-  .lista-fotos {
-    list-style: none;
-  }
+.lista-fotos {
+  list-style: none;
+}
 
-  .lista-fotos .lista-fotos-item {
-    display: inline-block;
-  }
+.lista-fotos .lista-fotos-item {
+  display: inline-block;
+}
 
-  .filtro {
-    display: block;
-    width: 100%;
-  }
+.filtro {
+  display: block;
+  width: 100%;
+}
 </style>
