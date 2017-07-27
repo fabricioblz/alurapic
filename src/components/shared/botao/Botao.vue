@@ -1,5 +1,5 @@
 <template>
-  <button :class='buttonStyle' @click='launchButton' :type='tipo'>{{ rotulo }}</button>
+  <button class='botao' :class='buttonStyle' @click='launchButton' :type='tipo'>{{ rotulo }}</button>
 </template>
 
 
@@ -22,8 +22,8 @@ export default{
 
   computed: {
     buttonStyle(){
-      if(this.classStyle == 'primary' || !this.classStyle) return 'botao botao-padrao';
-      if(this.classStyle == 'danger') return 'botao botao-perigo';
+      if(this.classStyle == 'primary' || !this.classStyle) return 'botao-padrao';
+      if(this.classStyle == 'danger') return 'botao-perigo';
 
     }
   }
