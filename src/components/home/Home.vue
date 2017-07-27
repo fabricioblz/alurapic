@@ -9,7 +9,7 @@
       <li class="lista-fotos-item" v-for="foto of fotosComFiltro">
         <meu-painel :titulo="foto.titulo">
           <imagem-responsiva :url="foto.url" :titulo="foto.titulo"/>
-            <meu-botao rotulo='Remover' tipo='button' />
+            <meu-botao rotulo='Remover' tipo='button' @click.native='remove()' />
         </meu-painel>
       </li>
     </ul>
@@ -36,6 +36,12 @@ export default {
       fotos: [],
 
       filtro: ''
+    }
+  },
+
+  methods: {
+    remove(){
+      alert('Precisss');
     }
   },
 
