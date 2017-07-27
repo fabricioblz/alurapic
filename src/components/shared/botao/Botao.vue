@@ -1,12 +1,12 @@
 <template>
-  <button class='botao botao-perigo' @click='launchButton' :type='tipo'>{{ rotulo }}</button>
+  <button :class='buttonStyle' @click='launchButton' :type='tipo'>{{ rotulo }}</button>
 </template>
 
 
 <script>
 
 export default{
-  props:['tipo', 'rotulo', 'confirmation'],
+  props:['tipo', 'rotulo', 'confirmation', 'classStyle'],
 
   methods: {
     launchButton(){
@@ -19,6 +19,14 @@ export default{
       }
     }
   },
+
+  computed: {
+    buttonStyle(){
+      if(this.classStyle == 'primary' || !this.classStyle) return 'botao botao-padrao';
+      if(this.classStyle == 'danger') return 'botao botao-perigo';
+
+    }
+  }
 }
 
 </script>
