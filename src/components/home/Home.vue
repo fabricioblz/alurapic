@@ -9,8 +9,8 @@
       <li class="lista-fotos-item" v-for="foto of fotosComFiltro">
         <meu-painel :titulo="foto.titulo">
           <imagem-responsiva :url="foto.url" :titulo="foto.titulo"/>
-            <meu-botao rotulo='Remover' tipo='button' @click.native='remove()' />
-        </meu-painel>
+            <meu-botao rotulo='Remover' tipo='button' @click.native='remove(foto)' />
+            </meu-painel>
       </li>
     </ul>
   </div>
@@ -40,8 +40,11 @@ export default {
   },
 
   methods: {
-    remove(){
-      alert('Precisss');
+    remove(foto){
+      if(confirm('Sure?'))
+      {
+        alert(foto.titulo + ' deleted');
+      }
     }
   },
 
