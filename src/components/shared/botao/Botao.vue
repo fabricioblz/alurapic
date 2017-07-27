@@ -6,7 +6,7 @@
 <script>
 
 export default{
-  props:['titulo', 'rotulo']
+  props:['tipo', 'rotulo']
 }
 
 </script>
