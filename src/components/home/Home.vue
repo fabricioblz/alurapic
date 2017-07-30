@@ -50,7 +50,12 @@ export default {
     remove(foto){
       this.$http
       .delete(`http://localhost:3000/v1/fotos/${ foto._id}`)
-      .then(()=> this.mensagem = 'Imagem removida com sucesso!', err=>this.mensagem='Não rolou!')
+      .then(()=>{
+        let index = this.fotos.indexOf(foto);
+        this.fotos.splice(index, 1)
+
+        this.mensagem = 'Imagem removida com sucesso!'
+      }, err=>this.mensagem='Não rolou!')
     }
   },
 
