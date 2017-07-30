@@ -13,7 +13,7 @@
       <div class="controle">
         <label for="url">URL</label>
         <input id="url"  v-model.lazy='foto.url'>
-        <imagem-responsiva :url='foto.url' :titulo='foto.titulo'/>
+        <imagem-responsiva v-show='foto.url' :url='foto.url' :titulo='foto.titulo'/>
       </div>
 
       <div class="controle">
