@@ -7,18 +7,18 @@
     <form @submit.prevent='save()'>
       <div class="controle">
         <label for="titulo">TÍTULO</label>
-        <input id="titulo"  @input="foto.titulo = $event.target.value" :value='foto.titulo'>
+        <input id="titulo" v-model='foto.titulo'>
       </div>
 
       <div class="controle">
         <label for="url">URL</label>
-        <input id="url"  @input="foto.url = $event.target.value" :value='foto.url'>
+        <input id="url"  v-model='foto.url'>
         <imagem-responsiva/>
       </div>
 
       <div class="controle">
         <label for="descricao">DESCRIÇÃO</label>
-        <textarea id="descricao"  @input="foto.descricao = $event.target.value" :value='foto.descricao'></textarea>
+        <textarea id="descricao"  v-model='foto.descricao'></textarea>
       </div>
 
       <div class="centralizado">
