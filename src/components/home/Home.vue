@@ -2,6 +2,7 @@
   <div>
 
     <h1 class="centralizado">Alurapic</h1>
+    <h3 class="centralizado">{{ mensagem }}</h3>
 
     <input type="search" class="filtro" @input="filtro = $event.target.value" placeholder="filtre pelo título da foto">
 
@@ -39,6 +40,7 @@ export default {
     return {
 
       fotos: [],
+      mensagem: '',
 
       filtro: ''
     }
@@ -46,7 +48,9 @@ export default {
 
   methods: {
     remove(foto){
-      alert(foto.titulo + ' deleted');
+      this.$http
+      .delete(`http://localhost:3000/v1/fotos/${ foto._id}`)
+      .then(()=> this.mensagem = 'Imagem removida com sucesso!', err=>this.mensagem='Não rolou!')
     }
   },
 
