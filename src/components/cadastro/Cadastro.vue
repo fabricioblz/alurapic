@@ -7,12 +7,12 @@
     <form @submit.prevent='save()'>
       <div class="controle">
         <label for="titulo">TÍTULO</label>
-        <input id="titulo" v-model='foto.titulo'>
+        <input id="titulo" v-model.lazy='foto.titulo'>
       </div>
 
       <div class="controle">
         <label for="url">URL</label>
-        <input id="url"  v-model='foto.url'>
+        <input id="url"  v-model.lazy='foto.url'>
         <imagem-responsiva :url='foto.url' :titulo='foto.titulo'/>
       </div>
 
