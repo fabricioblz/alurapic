@@ -47,20 +47,26 @@ export default {
 
   data (){
     return {
-      foto: new Foto()
+      foto: new Foto(),
+      id: this.$route.params.id
     }
   },
 
   methods: {
     save(){
-    this.resource
+    this.fotoService
     .cadastra(this.foto)
     .then(()=> this.foto = new Foto(), err => console.log(err));
     }
   },
 
   created() {
-    this.resource = new FotoService(this.$resource)
+    this.fotoService = new FotoService(this.$resource);
+    if(this.id){
+      this.fotoService
+        .busca(this.id)
+        .then(foto=> this.foto = foto)
+    }
   }
 }
 
