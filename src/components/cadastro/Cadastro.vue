@@ -10,12 +10,14 @@
     <form @submit.prevent='save()'>
       <div class="controle">
         <label for="titulo">TÍTULO</label>
-        <input id="titulo" v-model.lazy='foto.titulo'>
+        <input id="titulo" name='titulo' data-vv-as='Título' v-validate data-vv-rules="required|min:3|max:30" v-model='foto.titulo'>
+        <span class='erro' v-show="errors.has('titulo')">{{ errors.first('titulo') }}</span>
       </div>
 
       <div class="controle">
         <label for="url">URL</label>
-        <input id="url"  v-model.lazy='foto.url'>
+        <input id="url" name="url" v-validate data-vv-rules="required"  v-model='foto.url'>
+        <span class='erro' v-show="errors.has('url')">Deu ruim</span>
         <imagem-responsiva v-show='foto.url' :url='foto.url' :titulo='foto.titulo'/>
       </div>
 
@@ -57,12 +59,18 @@ export default {
 
   methods: {
     save(){
-    this.fotoService
-    .cadastra(this.foto)
-    .then(()=> {
-      this.$router.push({ name: 'home' })
-      this.foto = new Foto();
-    }, err => console.log(err));
+      this.$validator.
+      validateAll()
+      .then(success => {
+        if(success){
+          this.fotoService
+          .cadastra(this.foto)
+          .then(()=> {
+            this.$router.push({ name: 'home' })
+            this.foto = new Foto();
+          }, err => console.log(err));
+        }
+      })
     }
   },
 
@@ -100,6 +108,10 @@ export default {
 
   .centralizado {
     text-align: center;
+  }
+
+  .erro{
+    color: red;
   }
 
 </style>
