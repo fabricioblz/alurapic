@@ -3,10 +3,12 @@ import App from './App.vue'
 import VueResource from 'vue-resource';
 import VueRouter from 'vue-router';
 import { routes } from './routes';
+import VeeValidade from 'vee-validate';
 
 Vue.use(VueResource);
 Vue.http.options.root = 'http://localhost:3000';
 Vue.use(VueRouter);
+Vue.use(VeeValidade);
 
 
 const router = new VueRouter({
