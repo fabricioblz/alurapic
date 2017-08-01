@@ -57,7 +57,7 @@ export default {
         this.fotos.splice(index, 1)
 
         this.mensagem = 'Imagem removida com sucesso!'
-      }, err=>this.mensagem='Não rolou!')
+      }, err=>this.mensagem = err.message)
     }
   },
 
@@ -77,7 +77,7 @@ export default {
 
     this.fotoService
     .lista()
-    .then(fotos => this.fotos = fotos, err => console.log(err));
+    .then(fotos => this.fotos = fotos, err => this.mensagem = err.message);
   }
 }
 </script>
