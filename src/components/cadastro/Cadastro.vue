@@ -4,6 +4,9 @@
     <h1 class="centralizado">Cadastro</h1>
     <h2 class="centralizado">{{ foto.titulo }}</h2>
 
+    <h2 v-if='foto._id' class="centralizado">Editando</h2>
+    <h2 v-else class="centralizado">Incluindo</h2>
+
     <form @submit.prevent='save()'>
       <div class="controle">
         <label for="titulo">TÍTULO</label>
