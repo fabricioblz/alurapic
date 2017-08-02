@@ -17,7 +17,7 @@
       <div class="controle">
         <label for="url">URL</label>
         <input id="url" name="url" v-validate data-vv-rules="required"  v-model='foto.url'>
-        <span class='erro' v-show="errors.has('url')">Deu ruim</span>
+        <span class='erro' v-show="errors.has('titulo')">{{ errors.first('url') }}</span>
         <imagem-responsiva v-show='foto.url' :url='foto.url' :titulo='foto.titulo'/>
       </div>
 
