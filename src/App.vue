@@ -8,9 +8,14 @@
     <ul class="lista-fotos">
       <li class="lista-fotos-item" v-for="foto of fotosComFiltro">
 
-        <meu-painel :titulo="foto.titulo">
-            <imagem-responsiva :url="foto.url" :titulo="foto.titulo"/>
-        </meu-painel>
+        <div class="painel">
+            <h2 class="painel-titulo">{{ foto.titulo }}</h2>
+            <transition name="painel-fade">
+                <div class="painel-conteudo">
+                  <img :src='foto.url' class='imagem-responsiva'>
+                </div>
+            </transition>
+        </div>
 
       </li>
     </ul>
@@ -19,22 +24,15 @@
 </template>
 
 <script>
-import Painel from './components/shared/painel/Painel.vue';
-import ImagemResponsiva from './components/shared/imagem-responsiva/ImagemResponsiva.vue';
 
 export default {
-
-  components: {
-    'meu-painel' : Painel, 
-    'imagem-responsiva': ImagemResponsiva
-  },
 
   data() {
 
     return {
 
-      titulo: 'Alurapic', 
-      fotos: [], 
+      titulo: 'Curso Vue',
+      fotos: [],
       filtro: ''
     }
   },
@@ -86,6 +84,42 @@ export default {
   .filtro {
 
     display: block;
+    width: 100%;
+  }
+
+   .painel {
+    padding: 0 auto;
+    border: solid 2px grey;
+    display: inline-block;
+    margin: 5px;
+    box-shadow: 5px 5px 10px grey;
+    width: 200px;
+    height: 100%;
+    vertical-align: top;
+    text-align: center;
+  }
+
+  .painel .painel-titulo {
+    text-align: center;
+    border: solid 2px;
+    background: lightblue;
+    margin: 0 0 15px 0;
+    padding: 10px;
+    text-transform: uppercase;
+  }
+
+ .painel-fade-enter, .painel-fade-leave-active {
+
+     opacity: 0;
+ }
+
+ .painel-fade-enter-active, .painel-fade-leave-active {
+
+     transition: opacity .4s;
+ }
+
+  .imagem-responsiva {
+
     width: 100%;
   }
 </style>
