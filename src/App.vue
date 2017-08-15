@@ -9,6 +9,7 @@
       <li class="lista-fotos-item" v-for="foto of fotosComFiltro">
 
         <meu-painel :titulo="foto.titulo">
+          <img :src='foto.url' class='imagem-responsiva'>
         </meu-painel>
 
       </li>
@@ -19,7 +20,7 @@
 
 <script>
 
-import Painel from './components/shared/painel/Painel.vue';
+import Painel from './components/shared/painel/Painel.vue'
 
 export default {
   components: {

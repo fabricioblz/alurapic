@@ -2,6 +2,7 @@
   <div class="painel">
     <h2 class="painel-titulo" @dblclick="visivel = !visivel">{{ titulo }}</h2>
     <div class="painel-conteudo" v-show="visivel" >
+      <slot></slot>
     </div>
   </div>
 </template>
