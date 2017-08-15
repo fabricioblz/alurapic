@@ -8,12 +8,8 @@
     <ul class="lista-fotos">
       <li class="lista-fotos-item" v-for="foto of fotosComFiltro">
 
-        <div class="painel">
-          <h2 class="painel-titulo" @dblclick="visivel = !visivel">{{ foto.titulo }}</h2>
-          <div class="painel-conteudo" v-show="visivel" >
-            <img :src='foto.url' class='imagem-responsiva'>
-          </div>
-        </div>
+        <meu-painel :titulo="foto.titulo">
+        </meu-painel>
 
       </li>
     </ul>
@@ -23,7 +19,12 @@
 
 <script>
 
+import Painel from './components/shared/painel/Painel.vue';
+
 export default {
+  components: {
+    'meu-painel': Painel
+  },
 
   data() {
 
@@ -31,8 +32,7 @@ export default {
 
       titulo: 'Curso Vue',
       fotos: [],
-      filtro: '',
-      visivel: true
+      filtro: ''
     }
   },
 
